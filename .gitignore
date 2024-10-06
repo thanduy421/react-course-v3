@@ -22,3 +22,5 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 04-fundamental-projects/08-lorem-ipsum/starter/vite.config.js
+04-fundamental-projects/09-color-generator/starter/vite.config.js
+04-fundamental-projects/10-grocery-bud/starter/README.md

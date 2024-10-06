@@ -253,44 +253,48 @@ ul {
   margin-top: 1rem;
 }
 /* ============= PROJECT CSS =============== */
-
 .container {
-  padding: 2rem;
   display: grid;
-  row-gap: 1.5rem;
+  padding:2rem;
+  row-gap:1.5rem;
   height: 160px;
 }
 
 .color-form {
-  display: flex;
+  display: flex; 
+  align-items: stretch;
 }
-input[type='text'] {
-  border-color: transparent;
-  padding: 0.5rem 1rem;
-  font-size: 1.25rem;
-  max-width: 200px;
+
+.container h4 {
+  display: flex; 
+  align-items: center;
 }
+
 input[type='color'] {
   height: 100%;
-  background-color: var(--white);
-  border-color: var(--white);
+  width:4rem;
 }
-.container .btn {
-  border-radius: 0;
-  border-top-right-radius: var(--borderRadius);
-  border-bottom-right-radius: var(--borderRadius);
+
+input[type='text'] {
+  border-color: transparent; 
+  padding: 0.5rem 1rem; 
+  font-size: 1.25rem;
+  max-width:200px;
+}
+
+.color-form .btn {
+  border-top-left-radius: 0; 
+  border-bottom-left-radius: 0; 
+  font-size: 0.8rem;
   letter-spacing: 3px;
-  transition-duration: 0s;
 }
-@media screen and (min-width: 768px) {
+
+@media screen and (min-width:768px) {
   .container {
-    grid-template-columns: auto 1fr;
-    column-gap: 2rem;
-    align-items: center;
-  }
-  .color-form {
-    height: 40px;
-  }
+    display: flex;
+    height: 0%;
+    gap: 1.5rem;
+  }  
 }
 
 .colors {
@@ -299,19 +303,15 @@ input[type='color'] {
   grid-template-columns: repeat(auto-fit, minmax(223.33px, 1fr));
   grid-template-rows: repeat(auto-fit, minmax(96px, 1fr));
 }
+
 .color {
-  padding: 1rem 2rem;
   cursor: pointer;
-  font-size: 1rem;
-}
-.color p {
-  line-height: 1.5;
-  margin-bottom: 0.25rem;
 }
 
-.color-light .color-value {
+.color-light {
   color: var(--white);
 }
-.color-light .percent-value {
-  color: var(--white);
+
+.percent-value , .color-value {
+  margin: 1rem 0 1rem 2rem;
 }
