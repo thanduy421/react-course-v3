@@ -1,23 +1,23 @@
 import { useState } from "react";
-import { nanoid as nid } from "nanoid";
+import { toast } from "react-toastify";
 
-const Form = ({setItems}) => {
+const Form = ({addItem}) => {
     const [inputValue, setInputValue] = useState('');
 
     const handleSubmit = (event) => {
         event.preventDefault();
         if (inputValue.trim() === '') {
-            console.log('Please enter a value.');
+            toast.error('Please enter a value.');
             return;
         } else {
-            const newItem = {id:nid(), itemName:inputValue, completed:false};
-            setItems((state) => [...state, newItem]);
+            addItem(inputValue);
             setInputValue('');
         }
     }
 
     return (
         <form onSubmit={handleSubmit} className="input-form">
+            <h4 className="title">Grocery Bud</h4>
             <div className="form-control">
                 <input
                     type="text"
@@ -26,8 +26,8 @@ const Form = ({setItems}) => {
                     placeholder="Enter something..."
                     className="form-input"
                 />
+                <button type="submit" className="btn">add item</button>
             </div>
-        <button type="submit" className="btn">add item</button>
         </form>
     )
 }

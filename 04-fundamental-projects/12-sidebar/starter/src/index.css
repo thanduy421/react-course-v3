@@ -257,3 +257,163 @@ ul {
 Project CSS
 ===============
 */
+main {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--grey-100);
+  position:relative;
+}
+
+@keyframes growShrink {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.sidebar-toggle {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background: transparent;
+  border: transparent;
+  color: var(--primary-400);
+  font-size: 2.5rem;
+  cursor: pointer;
+  animation: growShrink 1.5s ease-in-out infinite;
+}
+
+/*
+=============== 
+Modal
+===============
+*/
+.modal-overlay {
+  position: fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:rgba(0, 0, 0, 0.5);
+  display:grid;
+  place-items: center;
+  z-index: -1;
+  visibility: hidden;
+  opacity: 0;
+}
+
+.show-modal {
+  opacity:1;
+  transition-property: opacity;
+  transition-duration: 1s;
+  visibility: visible;
+  z-index: 10;
+}
+
+.modal-container {
+  background-color: var(--white);
+  padding: 5rem 8rem;
+  border-radius: var(--borderRadius);
+  position: relative;
+  max-height: 30vh;
+}
+
+.close-modal-btn{
+  position: absolute;
+  top:10px;
+  right:10px;
+  border:transparent;
+  background: transparent;
+  font-size: 1.5rem;
+  color:var(--red-dark);
+  cursor: pointer;
+}
+/*
+=============== 
+Sidebar
+===============
+*/
+
+.sidebar{
+  position: fixed; 
+  top: 0; 
+  left: 0; 
+  height: 100%; 
+  background: var(--white); 
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  gap:1rem;
+  padding-bottom: 2rem;
+  transform: translate(-100%);
+  transition: var(--transition);
+}
+
+.show-sidebar {
+  transform: translate(0);
+}
+
+@media screen and (min-width:676px) {
+  .sidebar {
+    width:350px;
+  }
+}
+
+.sidebar-header{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-top:1rem;
+}
+
+.close-sidebar-btn{
+  border:transparent;
+  background: transparent;
+  font-size: 1.5rem;
+  color:var(--red-dark);
+  cursor: pointer;
+}
+
+.links a {
+  display: flex;
+  align-items: center;
+  font-size: 1.25rem;
+  text-transform: capitalize;
+  padding:1rem 1.5rem;
+  color:var(--grey-700);
+  transition: var(--transition);
+  letter-spacing: var(--letterSpacing);
+}
+
+.links a:hover {
+  background: var(--primary-100);
+  color: var(--grey-800);
+  padding-left: 2rem;
+}
+
+.links a svg {
+  margin-right: 0.5rem;
+  font-size: 1.5rem;
+}
+
+.social {
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  gap:15px;
+}
+
+.social li a{
+  color:var(--primary-400);
+  transition: var(--transition);
+}
+
+.social li a:hover{
+  color:var(--primary-800);
+}

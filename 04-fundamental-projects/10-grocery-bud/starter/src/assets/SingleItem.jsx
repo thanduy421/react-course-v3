@@ -1,19 +1,23 @@
-import { useState } from "react";
-
 const SingleItem = ({item, removeItem, toogleCompleted}) => {
-    const {id, itemName} = item;
+    const {id, itemName, completed} = item;
 
     return (
-        <li className="item"
-            style={{textDecoration: isChecked? "line-through" : "none"}}
+        <li className="single-item"
         >
             <input
                 type="checkbox"
-                checked={() => toogleCompleted(id)}
-                onChange={handleChange}
+                checked={completed}
+                onChange={() => toogleCompleted(id)}
             />
-            <span className="item-name">{itemName}</span>
-            <button className="btn" onClick={() => removeItem(id)}>
+            <p 
+                className="item-name"
+                style={{textDecoration: completed && "line-through"}}
+            >{itemName}</p>
+            <button 
+                className="btn remove-btn" 
+                onClick={() => removeItem(id)}
+                type="button"
+            >
                 Remove
             </button>
         </li>

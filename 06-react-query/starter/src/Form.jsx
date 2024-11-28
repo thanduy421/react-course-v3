@@ -1,11 +1,16 @@
 import { useState } from 'react';
+import {useGlobalContext} from './context';
 
 const Form = () => {
   const [newItemName, setNewItemName] = useState('');
+  const {addTask} = useGlobalContext();
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    addTask(newItemName);
+    setNewItemName('');
   };
+  
   return (
     <form onSubmit={handleSubmit}>
       <h4>task bud</h4>

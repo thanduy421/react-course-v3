@@ -253,3 +253,106 @@ ul {
   margin-top: 1rem;
 }
 /* ============= PROJECT CSS =============== */
+nav {
+  background: var(--white); 
+  box-shadow: var(--shadow-1);
+}
+
+.nav-header {
+  display: flex; 
+  align-items: center; 
+  justify-content: space-between; 
+  padding: 1rem;
+}
+
+.nav-toggle {
+  font-size: 1.5rem; 
+  border: transparent; 
+  background: transparent; 
+  color: var(--primary-500); 
+  transition: var(--transition); 
+  cursor: pointer;
+}
+
+.nav-toggle:hover {
+  color:var(--primary-700);
+  transform: rotate(90deg);
+}
+
+.logo {
+  height: 40px;
+}
+
+.links a {
+  color: var(--grey-700); 
+  font-size: 1rem; 
+  text-transform: capitalize;
+  letter-spacing: var(--letterSpacing);
+  display: block;
+  padding:0.5rem 1rem;
+  transition: var(--transition); 
+}
+
+.link-container {
+  overflow: hidden; /* Prevent overflow when the links are hidden */
+  transition: var(--transition);
+}
+
+.links a:hover {
+  background-color: var(--primary-100);
+  color:var(--primary-500);
+  padding-left: 1.5rem;
+}
+
+.social{
+  display: none;
+}
+
+
+/* Media query for screens less than 600px */
+@media screen and (min-width: 800px) {
+  .nav-toggle{
+    visibility: hidden;
+  }
+
+  .nav-header{
+    padding: 0;
+  }
+  
+  .nav-center{
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding:0.5rem 1rem;
+  }
+
+  .link-container {
+    height: auto !important;
+  }
+
+  .links {
+    display: flex;
+  }
+
+  .links a:hover {
+    padding:0.5rem 1rem;
+    background-color: transparent;
+  }
+
+  .social {
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+    gap:15px;
+  }
+  
+  .social li a{
+    color:var(--primary-400);
+  }
+  
+  .social li a:hover{
+    color:var(--primary-500);
+  }
+}
+

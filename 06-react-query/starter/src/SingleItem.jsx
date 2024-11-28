@@ -1,15 +1,19 @@
+import {useGlobalContext} from './context';
+
 const SingleItem = ({ item }) => {
+  const {toggleTask, deleteTask} = useGlobalContext();
+
   return (
     <div className='single-item'>
       <input
         type='checkbox'
-        checked={item.isDone}
-        onChange={() => console.log('edit task')}
+        checked={item.completed}
+        onChange={() => toggleTask(item.id)}
       />
       <p
         style={{
           textTransform: 'capitalize',
-          textDecoration: item.isDone && 'line-through',
+          textDecoration: item.completed && 'line-through',
         }}
       >
         {item.title}
@@ -17,7 +21,7 @@ const SingleItem = ({ item }) => {
       <button
         className='btn remove-btn'
         type='button'
-        onClick={() => console.log('delete task')}
+        onClick={() => deleteTask(item.id)}
       >
         delete
       </button>

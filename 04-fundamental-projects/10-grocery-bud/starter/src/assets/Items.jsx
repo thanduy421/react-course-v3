@@ -1,10 +1,14 @@
 import SingleItem from "./SingleItem";
 
-const Items = ({items, removeItem}) => {
+const Items = ({items, removeItem, toogleCompleted}) => {
     return (
-        <ul className="grocery-list">
+        <ul className="items">
             {items.map((item) => (
-                <SingleItem key={item.id} item={item} removeItem={removeItem}/>
+                <SingleItem 
+                    key={item.id} 
+                    item={item} 
+                    removeItem={removeItem}
+                    toogleCompleted={toogleCompleted}/>
             ))}
         </ul>
     )

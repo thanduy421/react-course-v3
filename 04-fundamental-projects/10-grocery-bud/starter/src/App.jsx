@@ -2,18 +2,37 @@ import { useEffect } from "react";
 import { useState } from "react";
 import Form from "./assets/Form";
 import Items from "./assets/Items";
+import { nanoid as nid } from "nanoid";
+import { ToastContainer, toast } from "react-toastify";
+
+//const savedItems = JSON.parse(localStorage.getItem('items') || []);
+const getLocalStorage = () => {
+  let list = localStorage.getItem('list');
+  if (list) {
+    list = JSON.parse(localStorage.getItem('list'));
+  } else {
+    list = [];
+  }
+  return list;
+};
+
 
 const App = () => {
-  const [items, setItems] = useState(getData());
+  const [items, setItems] = useState(getLocalStorage());
 
-  const getData = () => {
-    const savedItems = localStorage.getItem('items');
-    return savedItems ? JSON.parse(savedItems) : [];
+  const addItem = (inputValue) => {
+    const newItem = {
+      id:nid(), 
+      itemName:inputValue, 
+      completed:false};
+    setItems((state) => [...state, newItem]);
+    toast.success(`${inputValue} has been added!`)
   }
 
-  const removeItem = (id) => (
-    setItems(items.filter(item => item.id !== id))
-  )
+  const removeItem = (id) => {
+    setItems(items.filter(item => item.id !== id));
+    toast.success(`item has been removed!`);
+  }
 
   const toogleCompleted = (id) => {
     setItems(items.map(item => 
@@ -24,16 +43,17 @@ const App = () => {
   }
 
   useEffect(() => {
-    localStorage.setItem('item', JSON.stringify(items));
+    localStorage.setItem('items', JSON.stringify(items));
   }, [items])
 
   return (
-    <section className="section-center">
-      <h2>Grocery Bud - Starter</h2>
-      <Form setItems={setItems}/>
-      <Items items={items} 
+    <section className="section-center form">
+      <Form addItem={addItem}/>
+      <Items 
+        items={items} 
         removeItem={removeItem}
         toogleCompleted={toogleCompleted}/>
+        <ToastContainer position="top-right"/>
     </section>
   );
 };
