@@ -1,14 +1,17 @@
 import { useState } from 'react';
-import {useGlobalContext} from './context';
+import { useCreateTask } from './reactQuery';
 
 const Form = () => {
   const [newItemName, setNewItemName] = useState('');
-  const {addTask} = useGlobalContext();
+  const { isLoading, createTask } = useCreateTask();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    addTask(newItemName);
-    setNewItemName('');
+    createTask(newItemName, {
+    	onSuccess: () => {
+    		setNewItemName('');
+    	}
+    })
   };
   
   return (
@@ -21,7 +24,7 @@ const Form = () => {
           value={newItemName}
           onChange={(event) => setNewItemName(event.target.value)}
         />
-        <button type='submit' className='btn'>
+        <button type='submit' className='btn' disabled={isLoading}>
           add task
         </button>
       </div>

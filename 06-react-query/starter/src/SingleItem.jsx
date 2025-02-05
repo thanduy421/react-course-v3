@@ -1,14 +1,15 @@
-import {useGlobalContext} from './context';
+import {useToggleTask, useDeleteTask} from './reactQuery';
 
 const SingleItem = ({ item }) => {
-  const {toggleTask, deleteTask} = useGlobalContext();
+  const {toggleTask} = useToggleTask();
+  const {deleteTask, isLoading} = useDeleteTask();
 
   return (
     <div className='single-item'>
       <input
         type='checkbox'
         checked={item.completed}
-        onChange={() => toggleTask(item.id)}
+        onChange={() => toggleTask({id:item.id, isCompleted:!item.completed})}
       />
       <p
         style={{
@@ -22,6 +23,7 @@ const SingleItem = ({ item }) => {
         className='btn remove-btn'
         type='button'
         onClick={() => deleteTask(item.id)}
+		disabled={isLoading}
       >
         delete
       </button>

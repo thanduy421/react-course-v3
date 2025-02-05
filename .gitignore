@@ -24,3 +24,8 @@ yarn-error.log*
 04-fundamental-projects/08-lorem-ipsum/starter/vite.config.js
 04-fundamental-projects/09-color-generator/starter/vite.config.js
 04-fundamental-projects/10-grocery-bud/starter/README.md
+07-unsplash-images/starter/.env.development
+08-contentful-cms/starter/.env.development
+07-unsplash-images/final/vite.config.js
+07-unsplash-images/starter/vite.config.js
+08-contentful-cms/starter/vite.config.js

@@ -1,12 +1,20 @@
-import { Link, Outlet } from 'react-router-dom';
+import { Link, Outlet, useNavigation } from 'react-router-dom';
 import {Navbar} from '../pages';
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer } from 'react-toastify';
 
 const HomeLayout = () => {
+  //const navigation = useNavigation();
+  //const isLoading = navigation.state === 'loading';
+
   return (
-    <div>
+    <>
+	  <ToastContainer position='top-center'/>
       <Navbar/>
-	    <Outlet/>
-    </div>
+	  <section className='page'>
+		<Outlet/>
+	  </section>
+    </>
   );
 };
 

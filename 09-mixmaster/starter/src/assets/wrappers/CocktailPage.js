@@ -7,6 +7,10 @@ const Wrapper = styled.div`
     .btn {
       margin-bottom: 1rem;
     }
+    h3{
+      font-weight: bold;
+      letter-spacing: var(--letterSpacing);
+    }
   }
   .img {
     border-radius: var(--borderRadius);
@@ -42,6 +46,9 @@ const Wrapper = styled.div`
     .drink-info {
       padding-top: 0;
     }
+  }
+  .description {
+	  color:var(--grey-600)
   }
 `;
 

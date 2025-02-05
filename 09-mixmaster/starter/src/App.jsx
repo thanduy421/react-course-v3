@@ -1,26 +1,13 @@
-import {
-  HomeLayout,
-  About,
-  Landing,
-  Error,
-  Newsletter,
-  Cocktail,
-} from './pages';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-
+import { RouterProvider } from 'react-router-dom';
+import { queryClient, router } from './pageRoutes';
+import { QueryClientProvider } from '@tanstack/react-query';
 
 const App = () => {
   return (
-	<Router>
-		<Routes>
-			<Route exact path="/" element={<HomeLayout/>} />
-			<Route path="/about" element={<About/>} />
-			<Route path="/landing" element={<Landing/>} />
-			<Route path="/cocktail" element={<Cocktail/>} />
-			<Route path="/newsletter" element={<Newsletter/>} />
-			<Route path="*" element={<Error />} />  {/* Fallback route for 404 errors */}
-		</Routes>
-	</Router>
+	<QueryClientProvider client={queryClient}>
+		<RouterProvider router={router} />
+	</QueryClientProvider>
 	);
 };
+
 export default App;
